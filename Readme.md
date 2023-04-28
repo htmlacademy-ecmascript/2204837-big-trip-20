@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Daniil Markelov](https://up.htmlacademy.ru/ecmascript/20/user/2204837).
-* Наставник: `Дмитрий Гуляев`.
+* Наставник: [Дмитрий Гуляев](https://htmlacademy.ru/profile/dima).
 
 ---
 
