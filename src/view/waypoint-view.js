@@ -49,7 +49,7 @@ export default class WaypointView {
   }
 
   getElement() {
-    if (!this.elemant) {
+    if (!this.element) {
       this.element = createElement(this.getTemplate());
     }
 
