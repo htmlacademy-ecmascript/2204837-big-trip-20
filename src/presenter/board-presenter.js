@@ -10,7 +10,7 @@ export default class BoarderPresenter {
   }
 
   init () {
-    render(new SortView, this.boardContainer, RenderPosition.AFTERBEGIN);
+    render(new SortView, this.boardContainer, RenderPosition.BEFOREEND);
     render(new FormEditView, this.boardContainer, RenderPosition.BEFOREEND);
 
     for (let i = 0; i < 3; i++) {
