@@ -1,0 +1,9 @@
+const DESTINATION_COUNT = 5;
+
+const OFFER_COUNT = 5;
+
+const POINT_COUNT = 3;
+
+const TYPES = [];
+
+export {DESTINATION_COUNT,OFFER_COUNT,POINT_COUNT,TYPES};

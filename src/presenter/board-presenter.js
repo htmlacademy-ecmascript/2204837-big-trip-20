@@ -1,7 +1,7 @@
 import { render, RenderPosition } from '../render.js';
-import SortView from '../view/sort-view.js';
+import SortView from '../view/sort.js';
 import FormEditView from '../view/form-edit.js';
-import WaypointView from '../view/waypoint-view.js';
+import WaypointView from '../view/waypoint.js';
 
 export default class BoarderPresenter {
 
