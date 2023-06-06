@@ -1,3 +1,4 @@
+import { DESTINATION_COUNT } from '../const';
 import { getRandomValue } from '../utils';
 import { CITIES, DESCRIPTION} from './const';
 
@@ -17,4 +18,6 @@ function generateDestination () {
   };
 }
 
-export {generateDestination};
+const destinationsList = Array.from({length:DESTINATION_COUNT}, () => generateDestination());
+
+export {generateDestination, destinationsList};

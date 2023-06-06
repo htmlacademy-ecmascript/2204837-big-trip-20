@@ -3,7 +3,7 @@ import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(duration);
-dayjs.extand(relativeTime);
+dayjs.extend(relativeTime);
 
 const MSEC_IN_SEC = 1000;
 const SEC_IN_MIN = 60;

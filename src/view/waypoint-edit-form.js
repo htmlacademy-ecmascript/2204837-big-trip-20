@@ -142,7 +142,7 @@ function createFormEditTemplate() {
 </form>`;
 }
 
-export default class FormEditView {
+export default class WaypointEditFormView {
 
   getTemplate() {
     return createFormEditTemplate();

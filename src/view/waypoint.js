@@ -1,6 +1,32 @@
 import { createElement } from '../render.js';
+import { listOffers } from '../mock/offer.js';
 
-function createWaypointTemplate() {
+function createWaypointTemplate(point) {
+
+  function createOffersTemplate(wayPoint) {
+    const offersTemplates = [];
+    for (let i = 0; i < wayPoint.offers.length; i++) {
+      const offerId = wayPoint.offers[i];
+      const currentOffer = listOffers.find((offer) => offer.id === offerId);
+      //элемент с id === offerId
+      // offer — объект с деталями оффера
+      offersTemplates.push(`<li class="event__offer">
+      <span class="event__offer-title">${currentOffer.name}</span>
+      &plus;&euro;&nbsp;
+      <span class="event__offer-price">${currentOffer.price}</span>
+    </li>`);
+    }
+    // offersTemplates.push(`...`);
+    return offersTemplates.join('');
+    // return `
+    // <li class="event__offer">
+    //   <span class="event__offer-title">Order Uber</span>
+    //   &plus;&euro;&nbsp;
+    //   <span class="event__offer-price">20</span>
+    // </li>
+    // `;
+  }
+
   return `<ul class="trip-events__list">
   <li class="trip-events__item">
   <div class="event">
@@ -22,11 +48,7 @@ function createWaypointTemplate() {
     </p>
     <h4 class="visually-hidden">Offers:</h4>
     <ul class="event__selected-offers">
-      <li class="event__offer">
-        <span class="event__offer-title">Order Uber</span>
-        &plus;&euro;&nbsp;
-        <span class="event__offer-price">20</span>
-      </li>
+      ${createOffersTemplate(point)}
     </ul>
     <button class="event__favorite-btn event__favorite-btn--active" type="button">
       <span class="visually-hidden">Add to favorite</span>
@@ -43,9 +65,14 @@ function createWaypointTemplate() {
 }
 
 export default class WaypointView {
+  point = null;
+
+  constructor(point) {
+    this.point = point;
+  }
 
   getTemplate() {
-    return createWaypointTemplate();
+    return createWaypointTemplate(this.point);
   }
 
   getElement() {
