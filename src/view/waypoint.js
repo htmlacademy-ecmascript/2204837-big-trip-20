@@ -1,5 +1,6 @@
 import { createElement } from '../render.js';
 import { listOffers } from '../mock/offer.js';
+import { destinationsList } from '../mock/destination.js';
 
 function createWaypointTemplate(point) {
 
@@ -7,11 +8,10 @@ function createWaypointTemplate(point) {
     const offersTemplates = [];
     for (let i = 0; i < wayPoint.offers.length; i++) {
       const offerId = wayPoint.offers[i];
-      const currentOffer = listOffers.find((offer) => offer.id === offerId);
-      //элемент с id === offerId
-      // offer — объект с деталями оффера
+      const offer = listOffers.find((item) => item.type === wayPoint.type);
+      const currentOffer = offer.offers.find((item) => item.id === offerId);
       offersTemplates.push(`<li class="event__offer">
-      <span class="event__offer-title">${currentOffer.name}</span>
+      <span class="event__offer-title">${currentOffer.title}</span>
       &plus;&euro;&nbsp;
       <span class="event__offer-price">${currentOffer.price}</span>
     </li>`);
@@ -27,21 +27,46 @@ function createWaypointTemplate(point) {
     // `;
   }
 
+  function getCity (wayPoint) {
+    const destinationId = wayPoint.destination;
+    const currentDestination = destinationsList.find((item) => item.id === destinationId);
+    return currentDestination;
+  }
+
+  function dateDiff (date1, date2){
+    let answer = '';
+    const dateDifferent = date1.diff(date2, 'm');
+    const dateDay = Math.floor(dateDifferent / 1440);
+    const answerH = dateDifferent - dateDay * 1440;
+    const dateHour = Math.floor(answerH / 60);
+    const dateMinute = answerH - dateHour * 60;
+    if (dateDay !== 0) {
+      answer = `${dateDay}d `;
+    }
+    if (dateHour !== 0) {
+      answer += `${dateHour}h ` ;
+    }
+    if (dateMinute !== 0) {
+      answer += `${dateMinute}m` ;
+    }
+    return answer;
+  }
+
   return `<ul class="trip-events__list">
   <li class="trip-events__item">
   <div class="event">
-    <time class="event__date" datetime="2019-03-18">MAR 18</time>
+    <time class="event__date" datetime="${point.dateFrom.format('YYYY-MM-DD')}">${point.dateFrom.format('MMM DD')}</time>
     <div class="event__type">
-      <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
+      <img class="event__type-icon" width="42" height="42" src="img/icons/${point.type}.png" alt="Event type icon">
     </div>
-    <h3 class="event__title">Taxi Amsterdam</h3>
+    <h3 class="event__title">${point.type} ${getCity(point).name}</h3>
     <div class="event__schedule">
       <p class="event__time">
-        <time class="event__start-time" datetime="2019-03-18T10:30">10:30</time>
+        <time class="event__start-time" datetime="${point.dateFrom.format('YYYY-MM-DDTHH:mm')}">${point.dateFrom.format('HH:mm')}</time>
         &mdash;
-        <time class="event__end-time" datetime="2019-03-18T11:00">11:00</time>
+        <time class="event__end-time" datetime="${point.dateTo.format('YYYY-MM-DDTHH:mm')}}">${point.dateTo.format('HH:mm')}</time>
       </p>
-      <p class="event__duration">30M</p>
+      <p class="event__duration">${dateDiff(point.dateTo,point.dateFrom)} (${point.dateTo.diff(point.dateFrom,'minute')} minute)</p>
     </div>
     <p class="event__price">
       &euro;&nbsp;<span class="event__price-value">20</span>

@@ -2,10 +2,10 @@ import { getRandomInteger } from '../utils';
 import { Price } from './const';
 import { TYPES , OFFER_COUNT} from '../const';
 
-function generateOffer(type) {
+function generateOffer(type, index) {
   return {
     id : crypto.randomUUID(),
-    title : `Offer ${type}`,
+    title : `Offer ${type} ${index}`,
     price : getRandomInteger(Price.MIN, (Price.MAX / 10))
   };
 }
@@ -13,7 +13,7 @@ function generateOffer(type) {
 function generateOffers() {
   return TYPES.map((type) => ({
     type,
-    offers : Array.from({length:6}, () => generateOffer(type))
+    offers : Array.from({length:6}, (_, index) => generateOffer(type, index))
   }));
 }
 

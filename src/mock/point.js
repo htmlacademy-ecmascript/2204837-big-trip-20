@@ -48,5 +48,6 @@ function generatePoints() {
 }
 
 const pointsList = generatePoints();
+//console.log('pointsList:', pointsList);
 
 export {generatePoint, pointsList};
