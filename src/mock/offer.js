@@ -13,7 +13,7 @@ function generateOffer(type, index) {
 function generateOffers() {
   return TYPES.map((type) => ({
     type,
-    offers : Array.from({length:6}, (_, index) => generateOffer(type, index))
+    offers : Array.from({length:OFFER_COUNT}, (_, index) => generateOffer(type, index))
   }));
 }
 

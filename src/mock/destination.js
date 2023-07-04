@@ -11,9 +11,25 @@ function generateDestination () {
     description : DESCRIPTION,
     pictures : [
       {
-        'src' : `https://loremflicker.com/300/200/?random=${crypto.randomUUID()}`,
+        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
         'description' : `${city} description`
-      }
+      },
+      {
+        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
+        'description' : `${city} description`
+      },
+      {
+        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
+        'description' : `${city} description`
+      },
+      {
+        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
+        'description' : `${city} description`
+      },
+      {
+        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
+        'description' : `${city} description`
+      },
     ]
   };
 }

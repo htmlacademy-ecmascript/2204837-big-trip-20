@@ -1,6 +1,6 @@
 import { render, RenderPosition } from '../render.js';
 import SortView from '../view/sort.js';
-import FormEditView from '../view/waypoint-edit-form.js';
+import WaypointEditFormView from '../view/waypoint-edit-form.js';
 import WaypointView from '../view/waypoint.js';
 // import { generatePoint } from '../mock/point.js';
 // import { getRandomInteger, getRandomValue } from '../utils.js';
@@ -17,7 +17,7 @@ export default class BoarderPresenter {
 
   init () {
     render(new SortView, this.boardContainer, RenderPosition.BEFOREEND);
-    render(new FormEditView, this.boardContainer, RenderPosition.BEFOREEND);
+    render(new WaypointEditFormView(this.points[0]), this.boardContainer, RenderPosition.BEFOREEND);
 
     for (let i = 0; i < this.points.length; i++) {
 

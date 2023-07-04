@@ -36,6 +36,24 @@ function formatStringToTime(date) {
   return dayjs(date).format('HH:mm');
 }
 
+function dateDiff (date1, date2){
+  let answer = '';
+  const dateDifferent = date1.diff(date2, 'm');
+  const dateDay = Math.floor(dateDifferent / 1440);
+  const answerH = dateDifferent - dateDay * 1440;
+  const dateHour = Math.floor(answerH / 60);
+  const dateMinute = answerH - dateHour * 60;
+  if (dateDay !== 0) {
+    answer = `${dateDay}d `;
+  }
+  if (dateHour !== 0) {
+    answer += `${dateHour}h ` ;
+  }
+  if (dateMinute !== 0) {
+    answer += `${dateMinute}m` ;
+  }
+  return answer;
+}
 
-export {formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR};
+export {formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, dateDiff, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR};
 
