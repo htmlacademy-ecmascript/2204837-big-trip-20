@@ -1,7 +1,6 @@
 import { createElement } from '../render.js';
 import { destinationsList } from '../mock/destination.js';
 import { listOffers } from '../mock/offer.js';
-import { pointsList } from '../mock/point.js';
 
 function createOffersListTemplate(wayPoint) {
   const offersTemplates = [];
@@ -9,13 +8,7 @@ function createOffersListTemplate(wayPoint) {
   for (let i = 0; i < offersByType.offers.length; i++) {
     const currentOffer = offersByType.offers[i];
     const check = !! wayPoint.offers.find((item) => item === currentOffer.id);
-    let checked = '';
-    if (check) {
-      checked = 'checked';
-    } else {
-      checked = '';
-    }
-    // check ? checked = 'checked' : checked ='';
+    const checked = check ? 'checked' : '';
     offersTemplates.push(`<div class="event__offer-selector">
     <input class="event__offer-checkbox  visually-hidden" id="event-offer-mockid-${currentOffer.id}" type="checkbox" name="event-offer-mockid-${currentOffer.id}" ${checked}>
     <label class="event__offer-label" for="event-offer-mockid-${currentOffer.id}">
@@ -28,28 +21,27 @@ function createOffersListTemplate(wayPoint) {
   return offersTemplates.join('');
 }
 
-function getCurrentCity(wayPoint){
-  return destinationsList.find((item) => item.id === wayPoint.destination).name;
+function getCurrentCity(wayPoint, destinations){
+  return destinations.find((item) => item.id === wayPoint.destination).name;
 }
 
-function createFormEditTemplate(point) {
+function getCityListTamplate (point, destinations) {
+  const cityTemplates = [];
 
-  function getCityListTamplate () {
-    const cityTemplates = [];
-    const citys = [];
-    for (let i = 0; i < pointsList.length ; i++) {
-      citys.push((destinationsList.find((item) => item.id === pointsList[i].destination)).name);
-    }
-    const uniqueCityArray = new Set(citys);
-    for (const city of uniqueCityArray) {
-      cityTemplates.push(`<option value="${city}">${city}</option>`);
-    }
-    return cityTemplates.join('');
+  for (const destination of destinations) {
+    cityTemplates.push(`
+      <option value="${destination.name}" ${point.destination === destination.id ? 'selected' : ''}>
+        ${destination.name}
+      </option>`);
   }
+  return cityTemplates.join('');
+}
+
+function createFormEditTemplate(point, destinations) {
 
   function getEventPhotos(wayPoint) {
     const photosTemplates = [];
-    const currentDest = destinationsList.find((item) => item.id === wayPoint.destination);
+    const currentDest = destinations.find((item) => item.id === wayPoint.destination);
     for (let i = 0; i < currentDest.pictures.length; i++) {
       photosTemplates.push(`<img class="event__photo" src="${currentDest.pictures[i].src}" alt="Event photo"></img>`);
     }
@@ -57,10 +49,7 @@ function createFormEditTemplate(point) {
   }
 
   function getEventDescription(wayPoint) {
-    //const photosTemplates = [];
-    //  const destinanionId = wayPoint.destination;
-    const currentDest = destinationsList.find((item) => item.id === wayPoint.destination);
-    //photosTemplates.push(`<img class="event__photo" src="${currentDest.pictures[0].src}" alt="Event photo"></img>`);
+    const currentDest = destinations.find((item) => item.id === wayPoint.destination);
     return currentDest.description;
   }
 
@@ -118,8 +107,8 @@ function createFormEditTemplate(point) {
       <label class="event__label  event__type-output" for="event-destination-1">
       ${point.type}
       </label>
-      <select class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${getCurrentCity(point)}" list="destination-list-1">
-        ${getCityListTamplate(point)}
+      <select class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${getCurrentCity(point, destinations)}" list="destination-list-1">
+        ${getCityListTamplate(point, destinations)}
       </select>
     </div>
     <div class="event__field-group  event__field-group--time">
@@ -167,7 +156,7 @@ export default class WaypointEditFormView {
   }
 
   getTemplate() {
-    return createFormEditTemplate(this.point);
+    return createFormEditTemplate(this.point, destinationsList);
   }
 
   getElement() {

@@ -1,9 +1,7 @@
-import { DESTINATION_COUNT } from '../const';
-import { getRandomValue } from '../utils';
 import { CITIES, DESCRIPTION} from './const';
 
-function generateDestination () {
-  const city = getRandomValue(CITIES);
+function generateDestination (city) {
+
 
   return {
     id : crypto.randomUUID(),
@@ -34,6 +32,6 @@ function generateDestination () {
   };
 }
 
-const destinationsList = Array.from({length:DESTINATION_COUNT}, () => generateDestination());
+const destinationsList = CITIES.map((city) => generateDestination(city));
 
 export {generateDestination, destinationsList};

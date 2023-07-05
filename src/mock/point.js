@@ -19,19 +19,6 @@ function generatePoint (type, destinationId, offersIds) {
   };
 }
 
-// function ggeneratePoint () {
-//   return {
-//     id : crypto.randomUUID(),
-//     basePrice : getRandomInteger(Price.MIN, Price.MAX),
-//     dateFrom : getDate({next : false}),
-//     dateTo : getDate({next : true}),
-//     destination : destinationId,
-//     isFavorite : !!getRandomInteger(0,1),
-//     offers : offersIds,
-//     type
-//   };
-// }
-
 function generatePoints() {
   return Array.from({length:POINT_COUNT}, () => {
     const type = getRandomValue(TYPES);
@@ -48,6 +35,5 @@ function generatePoints() {
 }
 
 const pointsList = generatePoints();
-//console.log('pointsList:', pointsList);
 
 export {generatePoint, pointsList};
