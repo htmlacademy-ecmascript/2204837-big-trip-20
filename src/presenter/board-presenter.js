@@ -15,12 +15,8 @@ export default class BoarderPresenter {
 
   init () {
     render(this.#sortComponent, this.#container);
-    //render(new WaypointEditFormView({point:this.#points[0],}), this.#container);
-    // for (let i = 0; i < this.#points.length; i++) {
-    //   render (new WaypointView({point: this.#points[i]}), this.#container);
-    // }
+
     for (let i = 0; i < this.#points.length; i++) {
-      // render (new WaypointView({point: this.#points[i]}), this.#container);
       this.#renderPoints(this.#points[i]);
     }
   }
