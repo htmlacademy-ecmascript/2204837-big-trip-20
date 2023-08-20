@@ -1,12 +1,14 @@
 import FilterView from '../view/filter-view';
-import { render, RenderPosition } from '../render';
+import { render, replace } from '../framework/render.js';
 
 export default class HeaderFilterPreseter {
+  #headContainer;
+
   constructor ({headContainer}) {
-    this.headContainer = headContainer;
+    this.#headContainer = headContainer;
   }
 
   init () {
-    render (new FilterView, this.headContainer, RenderPosition.BEFOREEND);
+    render (new FilterView, this.#headContainer);
   }
 }
