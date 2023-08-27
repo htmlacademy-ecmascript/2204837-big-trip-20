@@ -87,6 +87,6 @@ export default class WaypointView extends AbstractView {
   #editClickHandler = (evt) => {
     evt.preventDefault();
     this.#editClick();
-  }
+  };
 
 }

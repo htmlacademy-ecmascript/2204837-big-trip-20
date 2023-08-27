@@ -1,5 +1,5 @@
 import HeaderInfoView from '../view/header-info';
-import { render, replace , RenderPosition} from '../framework/render.js';
+import { render, RenderPosition } from '../framework/render.js';
 
 export default class HeaderInfoPresenter {
   #headContainer;

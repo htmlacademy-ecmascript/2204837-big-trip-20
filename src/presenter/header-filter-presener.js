@@ -1,5 +1,5 @@
 import FilterView from '../view/filter-view';
-import { render, replace } from '../framework/render.js';
+import { render } from '../framework/render.js';
 
 export default class HeaderFilterPreseter {
   #headContainer;

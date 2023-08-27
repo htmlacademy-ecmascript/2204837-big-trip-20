@@ -17,11 +17,11 @@ export default class BoarderPresenter {
     render(this.#sortComponent, this.#container);
 
     for (let i = 0; i < this.#points.length; i++) {
-      this.#renderPoints(this.#points[i]);
+      this.#renderPoint(this.#points[i]);
     }
   }
 
-  #renderPoints(point) {
+  #renderPoint(point) {
 
     const escKeyDownHandler = (evt) => {
       if (evt.key === 'Escape') {
@@ -29,8 +29,8 @@ export default class BoarderPresenter {
         replaceFormToTrip();
         document.removeEventListener('keydown',escKeyDownHandler);
       }
-    }
-  
+    };
+
     const pointComponent = new WaypointView ({
       point,
       onEditClick: () => {
@@ -41,7 +41,7 @@ export default class BoarderPresenter {
 
     const eventFormComponent = new WaypointEditFormView({
       point,
-      onEditClick: () => {
+      onSubmit: () => {
         replaceFormToTrip();
         document.addEventListener('keydown',escKeyDownHandler);
       },
@@ -50,15 +50,15 @@ export default class BoarderPresenter {
         document.removeEventListener('keydown', escKeyDownHandler);
       }
     });
-    
+
     render(pointComponent,this.#container);
 
     function replaceTripToForm () {
-    replace(eventFormComponent, pointComponent);
+      replace(eventFormComponent, pointComponent);
     }
-  
+
     function replaceFormToTrip () {
-    replace(pointComponent, eventFormComponent);
+      replace(pointComponent, eventFormComponent);
     }
   }
 
