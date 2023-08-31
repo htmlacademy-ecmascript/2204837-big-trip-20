@@ -157,16 +157,16 @@ export default class WaypointEditFormView extends AbstractView {
   #handleFormSubmit;
   #handleFormClick;
 
-  constructor({point, onEditClick, onRollUpButtonClick}) {
+  constructor({point, onSubmit, onRollUpButtonClick}) {
     super();
     this.#destinationsList = destinationsList;
     this.#point = point;
 
     this.#handleFormClick = onRollUpButtonClick;
-    this.#handleFormSubmit = onEditClick;
+    this.#handleFormSubmit = onSubmit;
 
     this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#rollUpButtonHandler);
-    //this.element.querySelector('.event.event--edit.test').addEventListener('submit', this.#formSubmitHandler);
+    this.element.addEventListener('submit', this.#formSubmitHandler);
   }
 
   get template() {
