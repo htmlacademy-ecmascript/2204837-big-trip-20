@@ -24,10 +24,6 @@ function generateDestination (city) {
         'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
         'description' : `${city} description`
       },
-      {
-        'src' : `https://loremflickr.com/300/200/?random=${crypto.randomUUID()}`,
-        'description' : `${city} description`
-      },
     ]
   };
 }
