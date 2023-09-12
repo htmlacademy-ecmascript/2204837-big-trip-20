@@ -4,6 +4,7 @@ import { getDate } from './utils';
 import { POINT_COUNT, TYPES , OFFER_COUNT} from '../const';
 import { listOffers } from './offer';
 import { destinationsList } from './destination';
+// import { nanoid } from 'nanoid';
 
 
 function generatePoint (type, destinationId, offersIds) {
