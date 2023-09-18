@@ -55,5 +55,9 @@ function dateDiff (date1, date2){
   return answer;
 }
 
-export {formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, dateDiff, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR};
+function updateItem(items, update) {
+  return items.map((item) => item.id === update.id ? update : item);
+}
+
+export {updateItem, formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, dateDiff, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR};
 
