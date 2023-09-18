@@ -39,11 +39,11 @@ export default class WaypointPresenter {
       return;
     }
 
-    if (this.#waypoinListContainer.contains(prevWaypointComponent)){
+    if (this.#waypoinListContainer.contains(prevWaypointComponent.element)){
       replace(this.#waypointComponent, prevWaypointComponent);
     }
 
-    if (this.#waypoinListContainer.contains(prevWaypiontEditComponent)){
+    if (this.#waypoinListContainer.contains(prevWaypiontEditComponent.element)){
       replace(this.#waypointComponent, prevWaypiontEditComponent);
     }
     remove(prevWaypointComponent);
