@@ -2,7 +2,7 @@ const DESTINATION_COUNT = 5;
 
 const OFFER_COUNT = 6;
 
-const POINT_COUNT = 20;
+const POINT_COUNT = 5;
 
 const TYPES = ['taxi',
   'drive',

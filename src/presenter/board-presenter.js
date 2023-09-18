@@ -30,14 +30,18 @@ export default class BoarderPresenter {
     const waypointPresenter = new WaypointPresenter({
       waypoinListContainer: this.#container,
       onDataChange: this.#handleWaypointChange,
+      onModeChange: this.#handleModeChange,
     });
 
     waypointPresenter.init(point);
     this.#waypointPresenters.set(point.id, waypointPresenter);
   }
 
+  #handleModeChange = () => {
+    this.#waypointPresenters.forEach((presenter) => presenter.resetView());
+  };
+
   #renderPoints(points) {
-    // const filteredPoints = points.filter(...)
     points.forEach((point) => {
       this.#renderPoint(point);
     });
