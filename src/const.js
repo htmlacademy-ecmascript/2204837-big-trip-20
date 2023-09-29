@@ -14,4 +14,9 @@ const TYPES = ['taxi',
   'restaurant',
 ];
 
+const SortType= {
+  DEFAULT : 'default',
+  
+};
+
 export {DESTINATION_COUNT,OFFER_COUNT,POINT_COUNT,TYPES};
