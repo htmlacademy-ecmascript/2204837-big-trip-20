@@ -59,5 +59,16 @@ function updateItem(items, update) {
   return items.map((item) => item.id === update.id ? update : item);
 }
 
-export {updateItem, formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, dateDiff, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR};
+function getDateDifference (pointA, pointB) {
+  return dayjs(pointA.dateFrom).diff(dayjs(pointB.dateFrom));
+}
+
+function getTimeDifference (pointA, pointB) {
+  const pointAdifference = dayjs(pointA.dateTo).diff(dayjs(pointA.dateFrom));
+  const pointBdifference = dayjs(pointB.dateTo).diff(dayjs(pointB.dateFrom));
+
+  return pointBdifference - pointAdifference;
+}
+
+export {updateItem, formatStringToTime, formatStringToShortTime, formatStringToDateTime, getRandomValue, dateDiff, getRandomInteger, MSEC_IN_DAY, MSEC_IN_HOUR, getDateDifference, getTimeDifference};
 
