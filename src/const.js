@@ -14,9 +14,12 @@ const TYPES = ['taxi',
   'restaurant',
 ];
 
-const SortType= {
-  DEFAULT : 'default',
-  
+const SORT_TYPE = {
+  DAY: 'day',
+  EVENT:'event',
+  TIME: 'time',
+  PRICE:  'price',
+  OFFERS:'offers',
 };
 
-export {DESTINATION_COUNT,OFFER_COUNT,POINT_COUNT,TYPES};
+export {DESTINATION_COUNT,OFFER_COUNT,POINT_COUNT,TYPES,SORT_TYPE};
